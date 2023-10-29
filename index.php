@@ -9,32 +9,30 @@
 <body>
   <section class="mt-5 container p-5">
 
-    <a href="store_view.php" class="btn btn-outline-success mb-5" style="width: max-content;">Tambah</a>
+    <a href="create_task_data.php" class="btn btn-outline-success mb-5" style="width: max-content;">Tambah</a>
 
     <table class="table table-striped">
       <tr>
         <th>No</th>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Password</th>
-        <th>Level</th>
+        <th>title</th>
+        <th>description</th>
+        <th>deadline</th>
         <th>Aksi</th>
       </tr>
       <?php
       include 'koneksi.php';
       $no = 1;
-      $data = mysqli_query($koneksi, "select * from user");
+      $data = mysqli_query($koneksi, "select * from tasks");
       while ($d = mysqli_fetch_array($data)) {
       ?>
         <tr>
           <td><?php echo $no++; ?></td>
-          <td><?php echo $d['name']; ?></td>
-          <td><?php echo $d['username']; ?></td>
-          <td>**********</td>
-          <td><?php echo $d['level']; ?></td>
+          <td><?php echo $d['title']; ?></td>
+          <td><?php echo $d['description']; ?></td>
+          <td><?php echo $d['deadline']; ?></td>
           <td>
-            <a href="destroy_user_data.php?id=<?php echo $d['idUser']; ?>" class="btn btn-outline-danger">HAPUS</a>
-            <a role="button" class="btn btn-outline-success" href="edit.php?id=<?php echo $d['iUuser']; ?>">UBAH</a> </button>
+            <a href="destroy_task_data.php?id=<?php echo $d['id']; ?>" class="btn btn-outline-danger">HAPUS</a>
+            <a role="button" class="btn btn-outline-success" href="edit_task_data.php?id=<?php echo $d['id']; ?>">UBAH</a> </button>
           </td>
         </tr>
       <?php
